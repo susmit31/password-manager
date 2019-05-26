@@ -1,2 +1,2 @@
 # password-manager
-simple passsword managing programme written in python
+simple password managing programme written in python
