@@ -61,12 +61,19 @@ root.title('Password manager v1.0')
 
 # creating frames
 addFrame = Frame()
-addFrame.grid(row = 0, column = 0)
+addFrame.grid(row = 0, column = 0, padx = 40, pady = 10)
+
 getFrame = Frame()
-getFrame.grid(row = 0, column = 1)
+getFrame.grid(row = 0, column = 1, padx = 30, pady = 10)
+
+addTitleFrame = Frame(addFrame)
+addTitleFrame.grid(row = 0, column = 0)
+
+getTitleFrame = Frame(getFrame)
+getTitleFrame.grid(row = 0, column = 1)
 
 # creating add labels
-add_title = Label(addFrame, text='Add new data', font=('georgia',24,'bold'), bg = 'aqua')
+add_title = Label(addTitleFrame, text='Add new data', font=('georgia',24,'bold'), bg = 'aqua')
 add_siteLabel = Label(addFrame, text = 'Site name: ', font = fonty, height = 4)
 add_userLabel = Label(addFrame, text='Username: ' , font = fonty, height = 4)
 add_passLabel = Label(addFrame, text = 'Password: ', font = fonty, height = 4)
@@ -83,12 +90,12 @@ add_dateEntry = Entry(addFrame, font = fonty, width = 25)
 addButton = Button(addFrame, text='Add to database', font = fonty, command = addToDB)
 
 # gridding the add labels
-add_title.grid(row = 0, column = 0, columnspan = 40)
+add_title.grid(row = 0, column = 0)
 add_siteLabel.grid(row = 1, column = 0)
 add_userLabel.grid(row = 2, column = 0)
 add_passLabel.grid(row = 3, column = 0)
 add_dateLabel.grid(row = 4, column = 0)
-add_statLabel.grid(row = 6, column = 0, columnspan = 40)
+add_statLabel.grid(row = 6, column = 0)
 
 # gridding the add entries
 add_siteEntry.grid(row = 1, column = 1)
@@ -97,10 +104,10 @@ add_passEntry.grid(row = 3, column = 1)
 add_dateEntry.grid(row = 4, column = 1)
 
 # gridding the add button
-addButton.grid(row = 5, column = 0, columnspan = 40)
+addButton.grid(row = 5, column = 0, columnspan = 30)
 
 # creating get labels
-get_title = Label(getFrame, text='Retrieve password', font = ('georgia',24, 'bold'), bg='aqua')
+get_title = Label(getTitleFrame, text='Retrieve password', font = ('georgia',24, 'bold'), bg='aqua')
 get_siteLabel = Label(getFrame, text='Enter the name of the site:', font = fonty, height = 4)
 get_statLabel = [0]*3
 for i in range(3):
@@ -110,18 +117,18 @@ for i in range(3):
 get_siteEntry = Entry(getFrame, font = fonty, width = 25)
 
 # creating get button
-getButton = Button(text='Get data for this site', font = fonty, command = getFromDB)
+getButton = Button(getFrame, text='Get data for this site', font = fonty, command = getFromDB)
 
 # gridding get labels
-get_title.grid(row=0, column = 1, columnspan = 40)
+get_title.grid(row=0, column = 1, rowspan = 20)
 get_siteLabel.grid(row = 1, column = 1)
 for i in range(3):
-	get_statLabel[i].grid(row = 3+i, column = 1, columnspan = 40)
+	get_statLabel[i].grid(row = 4+i, column = 1, columnspan = 30, pady = 15)
 
 # gridding get entries
 get_siteEntry.grid(row = 1, column = 2)
 
 # gridding get button
-getButton.grid(row = 7, column = 1, columnspan = 40)
+getButton.grid(row = 3, column = 1, columnspan = 30)
 
 root.mainloop()
